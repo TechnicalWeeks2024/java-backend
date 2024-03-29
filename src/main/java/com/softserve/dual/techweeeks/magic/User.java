@@ -1,5 +1,6 @@
 package com.softserve.dual.techweeeks.magic;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "users")
+@Schema(name = "registryDB")
 public class User {
 
     @Id
