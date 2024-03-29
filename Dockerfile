@@ -1,5 +1,10 @@
-FROM openjdk:17-slim
+FROM maven:3-openjdk-17
+WORKDIR /app
+COPY . .
+RUN pwd  && ls -l && chmod +x mvnw
+RUN mvn -f pom.xml clean package -DskipTests
 ARG JAR_FILE=target/magic-java-be.jar
-COPY ${JAR_FILE} app.jar
-EXPOSE 8081
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+EXPOSE 7777
+WORKDIR /app/target
+RUN  pwd  && ls -l
+ENTRYPOINT ["java", "-jar", "magic-java-be.jar"]
